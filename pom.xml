@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.ws</groupId>
+    <artifactId>springboot-jib</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springboot-jib</name>
+    <description>Demo project for jib</description>
+
+    <properties>
+        <java.version>8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>1.7.0</version>
+                <configuration>
+                    <from>
+                        <!--base image -->
+                        <image>openjdk:alpine</image>
+                    </from>
+                    <to>
+                        <!--目标镜像registry地址,:前面是发布镜像的名称，:后面是发布的版本号 控制台 https://cr.console.aliyun.com/cn-hangzhou/instances/repositories-->
+                        <image>registry.cn-hangzhou.aliyuncs.com/wangs/library:${project.version}</image>
+                        <!-- 阿里云镜像账号 阿里云控制台->容器镜像服务->默认实例->访问凭证->设置固定密码 -->
+                        <auth>
+                            <username>xxx</username>
+                            <password>xxx</password>
+                        </auth>
+                        <tags>
+                            <tag>tag</tag>
+                            <tag>latest</tag>
+                        </tags>
+                    </to>
+                    <allowInsecureRegistries>true</allowInsecureRegistries>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
