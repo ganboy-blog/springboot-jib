@@ -64,7 +64,7 @@ mvn clean package
 [INFO] ------------------------------------------------------------------------
 
 ```
-#### 拉去镜像
+#### 拉取镜像
 ```shell
-ws@ws-TM1613:~/文档/Project$ sudo docker pull registry.cn-hangzhou.aliyuncs.com/wangs/library
+sudo docker pull registry.cn-hangzhou.aliyuncs.com/wangs/library
 ```
