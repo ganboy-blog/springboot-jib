@@ -1,9 +1,10 @@
-# springboot-jib
-使用jib快速发布镜像到阿里云
+
+## SpringBoot + jib 构建镜像Demo
+使用[jib]("https://github.com/GoogleContainerTools/jib")快速发布镜像到阿里云
 
 #### 环境
-- Ubuntu 19.10
 - Java 8
+- Ubuntu 19.10
 - Docker 18.06.1-ce
 
 #### 配置远程仓库
@@ -46,7 +47,7 @@
         </plugins>
     </build>
 ```
-#### 构建
+#### 构建并推送到远程仓库
 ```shell
 mvn clean package
 ```
@@ -67,4 +68,9 @@ mvn clean package
 #### 拉取镜像
 ```shell
 sudo docker pull registry.cn-hangzhou.aliyuncs.com/wangs/library
+```
+
+#### 测试
+```shell
+sudo docker run --name jib-demo -p 8080:8080 registry.cn-hangzhou.aliyuncs.com/wangs/library
 ```
